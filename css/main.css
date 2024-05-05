@@ -475,4 +475,9 @@ header ul a {
   margin-bottom: 1px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.container .row .continue-with {
+  border: 5px;
+  border-color: blue;
 }/*# sourceMappingURL=main.css.map */

@@ -1,4 +1,9 @@
-let createPost = (object) => {
+import { getData } from "./modules/API.js"
+
+let createPost = (objectPost) => {
+
+
+    let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
@@ -7,12 +12,12 @@ let createPost = (object) => {
     divForImage.classList.add("mainImage");
 
     let postImage = document.createElement("img");
-    postImage.setAttribute("src",link);
+    postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
 
     divForImage.append(postImage);
 
-    let divForAuthor = document.createElement(div);
+    let divForAuthor = document.createElement("div");
     divForAuthor.classList.add("authorContainer");
     
     let divForAuthorImage = document.createElement("div");
@@ -20,7 +25,7 @@ let createPost = (object) => {
 
     let authorImage = document.createElement("img");
     authorImage.classList.add("imageTravis");
-    authorImage.setAttribute("src",imageAuthor);
+    authorImage.setAttribute("src","https://media.dev.to/cdn-cgi/image/width=320,height=320,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F363742%2Fc7dc1bbd-b10f-49cc-8687-2216b81a4f45.png");  /* */
 
     divForAuthorImage.append(authorImage);
     divForAuthor.append(divForAuthorImage);
@@ -29,10 +34,10 @@ let createPost = (object) => {
     divAuthorDate.classList.add("authorDate");
 
     let authorName = document.createElement("p");
-    let authorNameText = document.createTextNode("Travis")
+    let authorNameText = document.createTextNode(author)
     authorName.append(authorNameText);
     authorName.append(document.createElement("br"));
-    let authorNameDateText = createTextNode("Mar 17");
+    let authorNameDateText = document.createTextNode("Mar 17"); /* */
     authorName.append(authorNameDateText);
 
     divAuthorDate.append(authorName);
@@ -41,8 +46,14 @@ let createPost = (object) => {
 
 
     let postTitle = document.createElement("h1");
-    let postTitlteText = createTextNode("2024 Cheat Sheet");
+    let postTitlteText = document.createTextNode(title);
     postTitle.append(postTitlteText);
+
+    let divForContentPost = document.createElement("div");
+    let contentPost = document.createElement("p");
+    let contentPostText = document.createTextNode(content);
+    contentPost.append(contentPostText);
+    divForContentPost.append(contentPost)
 
     let divButtonsHashtags = document.createElement("div");
     divButtonsHashtags.classList.add("buttonsDiv");
@@ -133,16 +144,32 @@ let createPost = (object) => {
 
     divForIcons.append(firstIconImg,secondIconImg,thirdIconImg,fourthIconImg,reactionsParagraph,commentsIcon,commentParagraph,savePostIcon);
 
-    mainSection.append(divForImage,divForAuthor,postTitle,divButtonsHashtags,divForIcons);
+    mainSection.append(divForImage,divForAuthor,postTitle,divForContentPost,divButtonsHashtags,divForIcons);
 
 
 
 
 
-
+    return mainSection;
 
 }
+const createWrapper = (array, wrapperID) => {
 
-createPost();
+    let wrapper = document.getElementById(wrapperID);
 
+    array.forEach(element => {
 
+        let card = createPost(element);
+
+        wrapper.append(card);
+        
+    });
+}
+
+const printPosts = async()=>{
+    let postsArray = await getData()
+    createWrapper(postsArray,'wrapperID')
+    
+}
+
+printPosts();

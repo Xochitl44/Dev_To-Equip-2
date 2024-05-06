@@ -2,18 +2,22 @@ import { getData } from "./modules/API.js"
 
 
 // Function that creates Post in DOM 
-let createPost = (objectPost) => {
+let createPost = (objectPost,index) => {
 
-
+    console.log(index);
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
 
     let divForImage = document.createElement("div");
-    divForImage.classList.add("mainImage");
+    
 
     let postImage = document.createElement("img");
+    postImage.classList.add("mainImage");
+
+    // Validates if it is the first post or not 
+    index == 0 ? postImage.classList.add("d-block") : postImage.classList.add("d-none");
     postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
 
@@ -155,11 +159,12 @@ let createPost = (objectPost) => {
 const createWrapper = (array, wrapperID) => {
 
     let wrapper = document.getElementById(wrapperID);
+    
+    array.forEach((element,index) => {
 
-    array.forEach(element => {
-
-        let card = createPost(element);
-
+        // Using the index from the array to know wich post is the first one
+        let card = createPost(element,index);
+        
         wrapper.append(card);
         
     });

@@ -173,3 +173,16 @@ const printPosts = async()=>{
 }
 
 printPosts();
+
+
+//function for filtering in search bar for the relevant post titles
+let filterSearch = document.getElementById("search-filter");
+
+filterSearch.addEventListener("keyup", (event) => {
+    let search = event.target.value;
+
+    let result = createPost.filter(titleObject => titleObject.title.toLowerCase().includes(search.toLowerCase())
+);
+
+printPosts(result, "search-filter")
+});

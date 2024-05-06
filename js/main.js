@@ -1,10 +1,24 @@
 import { getData } from "./modules/API.js"
 
+let localToken = localStorage.getItem("token");
+console.log(localToken);
+
+// Function that shows or hide the div in the navbar user section
+let showDivBarNav = (token) => {
+    let divBarNav = document.getElementById("navBarDiv");
+    token === null ? divBarNav.classList.add("d-block") : divBarNav.classList.add("d-none");   
+}
+
+showDivBarNav(localToken);
+
+
+
+
 
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-    console.log(index);
+    
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
@@ -57,6 +71,7 @@ let createPost = (objectPost,index) => {
 
     let divForContentPost = document.createElement("div");
     let contentPost = document.createElement("p");
+    contentPost.classList.add("text-left","p-3");
     let contentPostText = document.createTextNode(content);
     contentPost.append(contentPostText);
     divForContentPost.append(contentPost)
@@ -190,3 +205,5 @@ filterSearch.addEventListener("keyup", (event) => {
 
 printPosts(result, "search-filter")
 });
+
+

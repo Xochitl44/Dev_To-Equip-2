@@ -1,5 +1,7 @@
 import { getData } from "./modules/API.js"
 
+
+// Function that creates Post in DOM 
 let createPost = (objectPost) => {
 
 
@@ -58,28 +60,22 @@ let createPost = (objectPost) => {
     let divButtonsHashtags = document.createElement("div");
     divButtonsHashtags.classList.add("buttonsDiv");
 
+    // Creates buttons for hashtags 
+    let arrayHashtags = tags.split("#");
+    arrayHashtags.forEach(element => {
+        if(element != ""){
+            let firstHashtagButton = document.createElement("button");
+            firstHashtagButton.classList.add("btnGreen","btnColorGreen");
+            let firstHashtagButtonText = document.createTextNode("#" + element);
+            firstHashtagButton.append(firstHashtagButtonText);
+            divButtonsHashtags.append(firstHashtagButton);
+        }
+        
+    
+        });
+   
 
-    let firstHashtagButton = document.createElement("button");
-    firstHashtagButton.classList.add("btnGreen","btnColorGreen");
-    let firstHashtagButtonText = document.createTextNode("#webdev");
-    firstHashtagButton.append(firstHashtagButtonText);
-
-    let secondHashtagButton = document.createElement("button");
-    secondHashtagButton.classList.add("btnBlue","btnColorBlue");
-    let secondHashtagButtonText = document.createTextNode("#begginers");
-    secondHashtagButton.append(secondHashtagButtonText);
-
-    let thirdHashtagButton = document.createElement("button");
-    thirdHashtagButton.classList.add("btnRed","btnColorRed");
-    let thirdHashtagButtonText = document.createTextNode("#tutorial");
-    thirdHashtagButton.append(thirdHashtagButtonText);
-
-    let fourthHashtagButton = document.createElement("button");
-    fourthHashtagButton.classList.add("btnYellow","btnColorYellow");
-    let fourthHashtagButtonText = document.createTextNode("#programming");
-    fourthHashtagButton.append(fourthHashtagButtonText);
-
-    divButtonsHashtags.append(firstHashtagButton,secondHashtagButton,thirdHashtagButton,fourthHashtagButton);
+    
 
     let divForIcons = document.createElement("div");
     divForIcons.classList.add("iconsDiv");
@@ -147,12 +143,15 @@ let createPost = (objectPost) => {
     mainSection.append(divForImage,divForAuthor,postTitle,divForContentPost,divButtonsHashtags,divForIcons);
 
 
-
-
+    
+    
 
     return mainSection;
 
 }
+
+
+// Wrapper for the Post 
 const createWrapper = (array, wrapperID) => {
 
     let wrapper = document.getElementById(wrapperID);
@@ -173,3 +172,16 @@ const printPosts = async()=>{
 }
 
 printPosts();
+
+
+//function for filtering in search bar for the relevant post titles
+let filterSearch = document.getElementById("search-filter");
+
+filterSearch.addEventListener("keyup", (event) => {
+    let search = event.target.value;
+
+    let result = createPost.filter(titleObject => titleObject.title.toLowerCase().includes(search.toLowerCase())
+);
+
+printPosts(result, "search-filter")
+});

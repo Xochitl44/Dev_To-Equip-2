@@ -1,17 +1,37 @@
 import { getData } from "./modules/API.js"
 
-let createPost = (objectPost) => {
+let localToken = localStorage.getItem("token");
+console.log(localToken);
+
+// Function that shows or hide the div in the navbar user section
+let showDivBarNav = (token) => {
+    let divBarNav = document.getElementById("navBarDiv");
+    token === null ? divBarNav.classList.add("d-block") : divBarNav.classList.add("d-none");   
+}
+
+showDivBarNav(localToken);
 
 
+
+
+
+// Function that creates Post in DOM 
+let createPost = (objectPost,index) => {
+
+    
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
 
     let divForImage = document.createElement("div");
-    divForImage.classList.add("mainImage");
+    
 
     let postImage = document.createElement("img");
+    postImage.classList.add("mainImage");
+
+    // Validates if it is the first post or not 
+    index == 0 ? postImage.classList.add("d-block") : postImage.classList.add("d-none");
     postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
 
@@ -51,6 +71,7 @@ let createPost = (objectPost) => {
 
     let divForContentPost = document.createElement("div");
     let contentPost = document.createElement("p");
+    contentPost.classList.add("text-left","p-3");
     let contentPostText = document.createTextNode(content);
     contentPost.append(contentPostText);
     divForContentPost.append(contentPost)
@@ -58,28 +79,22 @@ let createPost = (objectPost) => {
     let divButtonsHashtags = document.createElement("div");
     divButtonsHashtags.classList.add("buttonsDiv");
 
+    // Creates buttons for hashtags 
+    let arrayHashtags = tags.split("#");
+    arrayHashtags.forEach(element => {
+        if(element != ""){
+            let firstHashtagButton = document.createElement("button");
+            firstHashtagButton.classList.add("btnGreen","btnColorGreen");
+            let firstHashtagButtonText = document.createTextNode("#" + element);
+            firstHashtagButton.append(firstHashtagButtonText);
+            divButtonsHashtags.append(firstHashtagButton);
+        }
+        
+    
+        });
+   
 
-    let firstHashtagButton = document.createElement("button");
-    firstHashtagButton.classList.add("btnGreen","btnColorGreen");
-    let firstHashtagButtonText = document.createTextNode("#webdev");
-    firstHashtagButton.append(firstHashtagButtonText);
-
-    let secondHashtagButton = document.createElement("button");
-    secondHashtagButton.classList.add("btnBlue","btnColorBlue");
-    let secondHashtagButtonText = document.createTextNode("#begginers");
-    secondHashtagButton.append(secondHashtagButtonText);
-
-    let thirdHashtagButton = document.createElement("button");
-    thirdHashtagButton.classList.add("btnRed","btnColorRed");
-    let thirdHashtagButtonText = document.createTextNode("#tutorial");
-    thirdHashtagButton.append(thirdHashtagButtonText);
-
-    let fourthHashtagButton = document.createElement("button");
-    fourthHashtagButton.classList.add("btnYellow","btnColorYellow");
-    let fourthHashtagButtonText = document.createTextNode("#programming");
-    fourthHashtagButton.append(fourthHashtagButtonText);
-
-    divButtonsHashtags.append(firstHashtagButton,secondHashtagButton,thirdHashtagButton,fourthHashtagButton);
+    
 
     let divForIcons = document.createElement("div");
     divForIcons.classList.add("iconsDiv");
@@ -147,20 +162,24 @@ let createPost = (objectPost) => {
     mainSection.append(divForImage,divForAuthor,postTitle,divForContentPost,divButtonsHashtags,divForIcons);
 
 
-
-
+    
+    
 
     return mainSection;
 
 }
+
+
+// Wrapper for the Post 
 const createWrapper = (array, wrapperID) => {
 
     let wrapper = document.getElementById(wrapperID);
+    
+    array.forEach((element,index) => {
 
-    array.forEach(element => {
-
-        let card = createPost(element);
-
+        // Using the index from the array to know wich post is the first one
+        let card = createPost(element,index);
+        
         wrapper.append(card);
         
     });
@@ -186,3 +205,5 @@ filterSearch.addEventListener("keyup", (event) => {
 
 printPosts(result, "search-filter")
 });
+
+

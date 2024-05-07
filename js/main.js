@@ -198,7 +198,7 @@ const printPosts = async()=>{
 
     let objectsSearch = postsArray;
 
-    createWrapper(postsArray,'wrapperID')
+    createWrapper(postsArray,'wrapperID');
     // ======================================= // 
     let wrapper = document.getElementById('wrapperID');
 
@@ -271,11 +271,20 @@ const printPosts = async()=>{
                 arrayPostsTop.push(element);
             }
         })
-        
+
         console.log(arrayPostsTop); 
 
         createWrapper(arrayPostsTop,'wrapperID');
     })
+
+    // ======================= // 
+
+    let latestBtn = document.getElementById("lastest-btn");
+
+    latestBtn.addEventListener(("click"), () => {
+        wrapper.innerHTML = "";
+        createWrapper(postsArray,'wrapperID');
+    });
     
 }
 

@@ -193,10 +193,11 @@ const createWrapper = (array, wrapperID) => {
 }
 
 const printPosts = async()=>{
-    let postsArray = await getData()
+
+    let postsArray = await getData();
     let objectsSearch = postsArray;
     createWrapper(postsArray,'wrapperID')
-    
+    // ======================================= // 
     let wrapper = document.getElementById('wrapperID');
 
     let filterSearch = document.getElementById("search-filter");
@@ -236,13 +237,26 @@ const printPosts = async()=>{
         }
     });
 
+    // ======================= // 
+
+
+   
+    
+
     
 }
+
+
+    let lastestBtn = document.getElementById("lastest-btn");
+
+    lastestBtn.addEventListener("click", () => {
+
+    })
+    console.log(lastestBtn);
 
 printPosts();
 
 
-//function for filtering in search bar for the relevant post titles
 
 
 

@@ -207,25 +207,33 @@ const printPosts = async()=>{
         
         let elementObject = [];
 
+        let flag = false; 
+
         objectsSearch.filter(element =>{ 
 
             let string1 = element.title.toLowerCase();
             let string2 = searchText.toLowerCase();
-          
+            
             for(let i=0 ; i < string2.length ; i++){
                 
                 if(string1[i] == string2[i]){
-                   
-                    wrapper.innerHTML = "";
-                    elementObject.push(element);
-                    createWrapper(elementObject,'wrapperID')
-                    
+                    flag = true;
                 }else{  
-                  //  wrapper.innerHTML ="";
+                    flag = false;
                 }
             }
-
+            if(flag == true){
+                wrapper.innerHTML = ""; 
+                elementObject.push(element);    
+                createWrapper(elementObject,'wrapperID');
+            }
+            
         })
+
+        if(searchText.length == 0){
+            wrapper.innerHTML = "";
+            createWrapper(postsArray,'wrapperID');
+        }
     });
 
     

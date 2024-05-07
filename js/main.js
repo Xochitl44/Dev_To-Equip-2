@@ -6,9 +6,15 @@ console.log(localToken);
 // Function that shows or hide the div in the navbar user section
 let showDivBarNav = (token) => {
     let divBarNav = document.getElementById("navBarDiv");
-    token === null ? divBarNav.classList.add("d-block") : divBarNav.classList.add("d-none");   
+    let navBarDivLogged = document.getElementById("navBarDivLogged");
+    if(token === null){
+        divBarNav.classList.add("d-block");
+        navBarDivLogged.classList.add("d-none");   
+    }else{
+        divBarNav.classList.add("d-none");
+        navBarDivLogged.classList.add("d-block");  
+    }
 }
-
 showDivBarNav(localToken);
 
 
@@ -32,6 +38,7 @@ let createPost = (objectPost,index) => {
 
     // Validates if it is the first post or not 
     index == 0 ? postImage.classList.add("d-block") : postImage.classList.add("d-none");
+    
     postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
 

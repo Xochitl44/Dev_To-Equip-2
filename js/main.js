@@ -195,7 +195,9 @@ const createWrapper = (array, wrapperID) => {
 const printPosts = async()=>{
 
     let postsArray = await getData();
+
     let objectsSearch = postsArray;
+
     createWrapper(postsArray,'wrapperID')
     // ======================================= // 
     let wrapper = document.getElementById('wrapperID');
@@ -239,20 +241,46 @@ const printPosts = async()=>{
 
     // ======================= // 
 
-
-   
+    let relevantBtn = document.getElementById("relevant-btn");
     
 
+    relevantBtn.addEventListener("click", () => {
+        let arrayPostsRelevant = [];
+        wrapper.innerHTML = "";
+        postsArray.forEach((element) => {
+            if(element.relevant == true){
+                arrayPostsRelevant.push(element);
+            }
+        })
+       
+        createWrapper(arrayPostsRelevant,'wrapperID');
+    })
+    
+   
+    // ======================= // 
+
+    
+    let topBtn = document.getElementById("top-btn");
+
+    topBtn.addEventListener("click", () => {
+        wrapper.innerHTML = "";
+        let arrayPostsTop = [];
+        postsArray.forEach((element) => {
+            let ratingNumber = Math.floor(Math.random() * 18);
+            if(ratingNumber > 9){
+                arrayPostsTop.push(element);
+            }
+        })
+        
+        console.log(arrayPostsTop); 
+
+        createWrapper(arrayPostsTop,'wrapperID');
+    })
     
 }
 
 
-    let lastestBtn = document.getElementById("lastest-btn");
-
-    lastestBtn.addEventListener("click", () => {
-
-    })
-    console.log(lastestBtn);
+    
 
 printPosts();
 

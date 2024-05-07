@@ -198,18 +198,17 @@ const printPosts = async()=>{
     createWrapper(postsArray,'wrapperID')
     
     let wrapper = document.getElementById('wrapperID');
+
     let filterSearch = document.getElementById("search-filter");
+
     filterSearch.addEventListener("keyup", (event) => {
 
-        
-        
         let searchText = document.getElementById("search-filter").value;
         
-        
         let elementObject = [];
+
         objectsSearch.filter(element =>{ 
 
-            
             let string1 = element.title.toLowerCase();
             let string2 = searchText.toLowerCase();
           
@@ -221,7 +220,7 @@ const printPosts = async()=>{
                     elementObject.push(element);
                     createWrapper(elementObject,'wrapperID')
                     
-                }else{
+                }else{  
                   //  wrapper.innerHTML ="";
                 }
             }

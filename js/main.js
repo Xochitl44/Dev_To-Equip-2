@@ -24,7 +24,7 @@ showDivBarNav(localToken);
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-    
+   
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
@@ -194,7 +194,41 @@ const createWrapper = (array, wrapperID) => {
 
 const printPosts = async()=>{
     let postsArray = await getData()
+    let objectsSearch = postsArray;
     createWrapper(postsArray,'wrapperID')
+    
+    let wrapper = document.getElementById('wrapperID');
+    let filterSearch = document.getElementById("search-filter");
+    filterSearch.addEventListener("keyup", (event) => {
+
+        
+        
+        let searchText = document.getElementById("search-filter").value;
+        
+        
+        let elementObject = [];
+        objectsSearch.filter(element =>{ 
+
+            
+            let string1 = element.title.toLowerCase();
+            let string2 = searchText.toLowerCase();
+          
+            for(let i=0 ; i < string2.length ; i++){
+                
+                if(string1[i] == string2[i]){
+                   
+                    wrapper.innerHTML = "";
+                    elementObject.push(element);
+                    createWrapper(elementObject,'wrapperID')
+                    
+                }else{
+                  //  wrapper.innerHTML ="";
+                }
+            }
+
+        })
+    });
+
     
 }
 
@@ -202,15 +236,6 @@ printPosts();
 
 
 //function for filtering in search bar for the relevant post titles
-let filterSearch = document.getElementById("search-filter");
 
-filterSearch.addEventListener("keyup", (event) => {
-    let search = event.target.value;
-
-    let result = createPost.filter(titleObject => titleObject.title.toLowerCase().includes(search.toLowerCase())
-);
-
-printPosts(result, "search-filter")
-});
 
 

@@ -484,4 +484,49 @@ header ul a {
 .container .row .continue-with {
   border: 5px;
   border-color: blue;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #171717;
+}
+a:hover {
+  cursor: pointer;
+  color: #0000ff;
+}
+
+.aside2 .card {
+  padding: 0px;
+}
+.aside2 .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+.aside2 .card .contenedores, .aside2 .card .cardContent {
+  padding: 16px 12px;
+  margin: 0px;
+}
+.aside2 .card .desciptionTag {
+  font-size: 12px;
+  font-weight: 300;
+}
+.aside2 h4 {
+  font-size: 18px;
+}
+
+#titleListWrapper {
+  padding: 0px;
+}
+
+.listPostSideBar {
+  padding: 20px;
+  list-style: none;
+}
+.listPostSideBar:hover {
+  background-color: #fff;
+  color: #0000ff;
 }/*# sourceMappingURL=main.css.map */

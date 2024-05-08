@@ -260,7 +260,7 @@ const topButton = async()=>{
 
 topButton();
 
-//Adds functioning to the Top Button,
+//Adds functionality to the Top Button,
 const relevantButton = async()=>{ 
 
     let postsArray = await getData();
@@ -279,6 +279,7 @@ const relevantButton = async()=>{
         })
        
         createWrapper(arrayPostsRelevant,'wrapperID');
+        arrayPostsRelevant = [];
     })
 }
 

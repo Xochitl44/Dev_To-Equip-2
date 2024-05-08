@@ -4,6 +4,7 @@ let localToken = localStorage.getItem("token");
 console.log(localToken);
 
 // Function that shows or hide the div in the navbar user section
+
 let showDivBarNav = (token) => {
     let divBarNav = document.getElementById("navBarDiv");
     let navBarDivLogged = document.getElementById("navBarDivLogged");
@@ -193,10 +194,94 @@ const printPosts = async()=>{
 
     let postsArray = await getData();
 
-    let objectsSearch = postsArray;
-
     createWrapper(postsArray,'wrapperID');
-    // ======================================= // 
+}
+
+printPosts();
+
+
+let showLeftAside = (token) => {
+    let divLeftAside = document.getElementById("rightAsideDiv");
+    let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
+    if(token === null){
+        divLeftAside.classList.add("d-block");
+        divLeftAsideLogged.classList.add("d-none");   
+    }else{
+        divLeftAside.classList.add("d-none");
+        divLeftAsideLogged.classList.add("d-block");  
+    }
+}
+
+showLeftAside(localToken);
+
+const latestButton = async()=>{
+
+    let wrapper = document.getElementById('wrapperID');
+    let latestPostArray = await getData();
+    let latestBtn = document.getElementById("lastest-btn");
+    
+    latestBtn.addEventListener(("click"), () => {
+        wrapper.innerHTML = "";
+        createWrapper(latestPostArray.reverse(),'wrapperID');
+    });
+
+}
+
+latestButton();
+
+const topButton = async()=>{
+
+    let arrayPostsTop = await getData();
+    let topBtn = document.getElementById("top-btn");
+    let wrapper = document.getElementById('wrapperID');
+    let arraypostsTopFiltered = []
+    topBtn.addEventListener("click", () => {
+        wrapper.innerHTML = "";
+        arrayPostsTop.forEach((element) => {
+            let ratingNumber = Math.floor(Math.random() * 18);
+            if(ratingNumber > 9){
+                console.log(ratingNumber);
+                arraypostsTopFiltered.push(element);
+            }
+        })
+
+        console.log(arraypostsTopFiltered); 
+
+        createWrapper(arraypostsTopFiltered,'wrapperID');
+        
+    })
+
+}
+
+topButton();
+
+const relevantButton = async()=>{ 
+
+    let postsArray = await getData();
+    let wrapper = document.getElementById('wrapperID');
+
+    let relevantBtn = document.getElementById("relevant-btn");
+    
+    let arrayPostsRelevant = [];
+
+    relevantBtn.addEventListener("click", () => {
+        wrapper.innerHTML = "";
+        postsArray.forEach((element) => {
+            if(element.relevant == true){
+                arrayPostsRelevant.push(element);
+            }
+        })
+       
+        createWrapper(arrayPostsRelevant,'wrapperID');
+    })
+}
+
+relevantButton();
+
+const searchFilter = async () =>{
+
+    let objectsSearch = await getData();
+
     let wrapper = document.getElementById('wrapperID');
 
     let filterSearch = document.getElementById("search-filter");
@@ -232,75 +317,9 @@ const printPosts = async()=>{
 
         if(searchText.length == 0){
             wrapper.innerHTML = "";
-            createWrapper(postsArray,'wrapperID');
+            createWrapper(objectsSearch,'wrapperID');
         }
     });
-
-    // ======================= // 
-
-    let relevantBtn = document.getElementById("relevant-btn");
-    
-
-    relevantBtn.addEventListener("click", () => {
-        let arrayPostsRelevant = [];
-        wrapper.innerHTML = "";
-        postsArray.forEach((element) => {
-            if(element.relevant == true){
-                arrayPostsRelevant.push(element);
-            }
-        })
-       
-        createWrapper(arrayPostsRelevant,'wrapperID');
-    })
-    
-   
-    // ======================= // 
-
-    
-    let topBtn = document.getElementById("top-btn");
-
-    topBtn.addEventListener("click", () => {
-        wrapper.innerHTML = "";
-        let arrayPostsTop = [];
-        postsArray.forEach((element) => {
-            let ratingNumber = Math.floor(Math.random() * 18);
-            if(ratingNumber > 9){
-                arrayPostsTop.push(element);
-            }
-        })
-
-        console.log(arrayPostsTop); 
-
-        createWrapper(arrayPostsTop,'wrapperID');
-    })
-
-    // ======================= // 
-
-    let latestBtn = document.getElementById("lastest-btn");
-    let latestPostArray = [];
-    latestBtn.addEventListener(("click"), () => {
-        wrapper.innerHTML = "";
-        latestPostArray = postsArray.reverse()  ;
-        createWrapper(latestPostArray,'wrapperID');
-    });
-    
 }
 
-
-    
-
-printPosts();
-
-
-let showLeftAside = (token) => {
-    let divLeftAside = document.getElementById("rightAsideDiv");
-    let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
-    if(token === null){
-        divLeftAside.classList.add("d-block");
-        divLeftAsideLogged.classList.add("d-none");   
-    }else{
-        divLeftAside.classList.add("d-none");
-        divLeftAsideLogged.classList.add("d-block");  
-    }
-}
-showLeftAside(localToken);
+searchFilter();

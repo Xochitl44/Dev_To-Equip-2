@@ -40,10 +40,10 @@
         </div>
         <div class="row">
             <div class="col-10">
-                <form id="create-Post" action="" class="text-black border rounded p-3">
+                <form id="create-post-form" action="" class="text-black border rounded p-3">
                     <div class="form-group mb-3">
                         <label for="">Title</label>
-                        <input name="title" type="text" class="form-control" placeholder="Write your post content here..."value=""/>
+                        <input name="title" type="text" class="form-control" placeholder="Write your post content here..." value=""/>
                     </div>
                     <div class="border border-light-subtle bg- d-flex justify-content-evenly">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 mt-5 d-flex justify-content-start gap-4">
-                    <button class="btnAcc2 bg-info border rounded">Publish</button> 
+                    <button type="button" id="save-post-btn" class="btnAcc2 bg-info border rounded w-25">Publish</button> 
                     <button class="btnAcc2 border rounded">Save draft</button> 
                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"><path d="M12 1l9.5 5.5v11L12 23l-9.5-5.5v-11L12 1zm0 2.311L4.5 7.653v8.694l7.5 4.342 7.5-4.342V7.653L12 3.311zM12 16a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
                     <button class="buttonLogIn2 border rounded">Revert new changes</button> 
@@ -107,7 +107,7 @@
     </div>
 
     
-    <script src="/js/main.js" type="module"></script>
+    <script src="../js/createPost.js" type="module"></script>
 </body>
 
 </html>

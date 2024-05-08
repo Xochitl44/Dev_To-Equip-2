@@ -18,6 +18,20 @@ let showDivBarNav = (token) => {
 showDivBarNav(localToken);
 
 
+// Function that shows or hide the left aside once the user logs in
+
+let showLeftAside = (token) => {
+    let divLeftAside = document.getElementById("rightAsideDiv");
+    let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
+    if(token === null){
+        divLeftAside.classList.add("d-block");
+        divLeftAsideLogged.classList.add("d-none");   
+    }else{
+        divLeftAside.classList.add("d-none");
+        divLeftAsideLogged.classList.add("d-block");  
+    }
+}
+showLeftAside(localToken);
 
 
 
@@ -200,17 +214,5 @@ const printPosts = async()=>{
 
 printPosts();
 
-
-//function for filtering in search bar for the relevant post titles
-let filterSearch = document.getElementById("search-filter");
-
-filterSearch.addEventListener("keyup", (event) => {
-    let search = event.target.value;
-
-    let result = createPost.filter(titleObject => titleObject.title.toLowerCase().includes(search.toLowerCase())
-);
-
-printPosts(result, "search-filter")
-});
 
 

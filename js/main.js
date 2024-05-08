@@ -18,9 +18,6 @@ let showDivBarNav = (token) => {
 showDivBarNav(localToken);
 
 
-
-
-
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
@@ -294,6 +291,15 @@ const printPosts = async()=>{
 printPosts();
 
 
-
-
-
+let showLeftAside = (token) => {
+    let divLeftAside = document.getElementById("rightAsideDiv");
+    let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
+    if(token === null){
+        divLeftAside.classList.add("d-block");
+        divLeftAsideLogged.classList.add("d-none");   
+    }else{
+        divLeftAside.classList.add("d-none");
+        divLeftAsideLogged.classList.add("d-block");  
+    }
+}
+showLeftAside(localToken);

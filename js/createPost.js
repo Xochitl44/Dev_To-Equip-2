@@ -9,8 +9,15 @@ savePostBtn.addEventListener("click", async () => {
         let property = field.name;
         let value = field.value;
         postObject[property] = value;
+    
     });
 
+    let checkbox = document.getElementById("myCheckbox");
+    let checkboxValue = checkbox.checked;
+    postObject["relevant"] = checkboxValue; 
+
+
+    
     console.log(postObject);
     let savedPost = await createPost(postObject);
     console.log(savedPost);

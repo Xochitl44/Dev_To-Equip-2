@@ -16,6 +16,8 @@ let showDivBarNav = (token) => {
         navBarDivLogged.classList.add("d-block");  
     }
 }
+
+// Changes Navbar between Login and User depending if we have a token 
 showDivBarNav(localToken);
 
 
@@ -190,6 +192,7 @@ const createWrapper = (array, wrapperID) => {
     });
 }
 
+// printPosts in Wrapper
 const printPosts = async()=>{
 
     let postsArray = await getData();
@@ -199,7 +202,7 @@ const printPosts = async()=>{
 
 printPosts();
 
-
+// Shows or hide Leftside bar 
 let showLeftAside = (token) => {
     let divLeftAside = document.getElementById("rightAsideDiv");
     let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
@@ -214,6 +217,7 @@ let showLeftAside = (token) => {
 
 showLeftAside(localToken);
 
+//Adds functioning to the Latest Button, shows the latest posts added to our Data Base 
 const latestButton = async()=>{
 
     let wrapper = document.getElementById('wrapperID');
@@ -229,6 +233,7 @@ const latestButton = async()=>{
 
 latestButton();
 
+//Adds functioning to the Top Button, shows the posts that have more than 9 points of rating 
 const topButton = async()=>{
 
     let arrayPostsTop = await getData();
@@ -255,6 +260,7 @@ const topButton = async()=>{
 
 topButton();
 
+//Adds functioning to the Top Button,
 const relevantButton = async()=>{ 
 
     let postsArray = await getData();
@@ -277,7 +283,7 @@ const relevantButton = async()=>{
 }
 
 relevantButton();
-
+// Gives funcionality to the search bar taking as parameter the text that we are writing 
 const searchFilter = async () =>{
 
     let objectsSearch = await getData();

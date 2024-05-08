@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
-    <title>Document</title>
+    <title>DEV Community</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
             <div class="containerSearch">
                 <div class="inputDiv">
-                    <input class="searchBar" type="search" placeholder="Search...">
+                    <input id="search-filter" class="searchBar" type="search" placeholder="Search...">
                 </div>
                 <div class="lupaDiv">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img"
@@ -32,8 +32,26 @@
                 </div>
             </div>
             <div id="navBarDiv" class="navBarBtns">
-                <button class="buttonLogIn2">Log in</button>
+                <a href="views/loginForm.html">
+                    <button class="buttonLogIn2">Log in</button>
+                </a>
                 <button class="btnAcc2">Create account</button>
+            </div>
+            <div id="navBarDivLogged" class="navBarBtns d-flex align-items-center">
+                <div>
+                    <a href="http://localhost:5500/views/createPost.html">
+                    <button class="btnAcc2 me-3">Create Post</button>
+                    </a>
+                </div>
+                <div>
+                    <svg mxmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="adjfhuy7hl7ostjvbblf7bm9bcul8q7o" class="crayons-icon"><title id="adjfhuy7hl7ostjvbblf7bm9bcul8q7o" class="m-3">Notifications</title>
+                        <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
+                    </svg>
+                </div>
+                <div class="p-3">
+                    <img class="profilePic me-3" src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+                </div>
+
             </div>
         </div>
     </nav>
@@ -487,13 +505,14 @@
                 <header>
                     <ul>
                         <li>
-                            <a href="#"><b>Relevant</b></a>
+                            <a id="lastest-btn" href="#">Latest</a>
+                            
                         </li>
                         <li>
-                            <a href="#">Latest</a>
+                            <a id="relevant-btn" href="#">Relevant</a>
                         </li>
                         <li>
-                            <a href="#">Top</a>
+                            <a id="top-btn" href="#">Top</a>
                         </li>
                     </ul>
                 </header>

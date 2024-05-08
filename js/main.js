@@ -6,9 +6,15 @@ console.log(localToken);
 // Function that shows or hide the div in the navbar user section
 let showDivBarNav = (token) => {
     let divBarNav = document.getElementById("navBarDiv");
-    token === null ? divBarNav.classList.add("d-block") : divBarNav.classList.add("d-none");   
+    let navBarDivLogged = document.getElementById("navBarDivLogged");
+    if(token === null){
+        divBarNav.classList.add("d-block");
+        navBarDivLogged.classList.add("d-none");   
+    }else{
+        divBarNav.classList.add("d-none");
+        navBarDivLogged.classList.add("d-block");  
+    }
 }
-
 showDivBarNav(localToken);
 
 
@@ -18,7 +24,7 @@ showDivBarNav(localToken);
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-    
+   
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
@@ -32,6 +38,7 @@ let createPost = (objectPost,index) => {
 
     // Validates if it is the first post or not 
     index == 0 ? postImage.classList.add("d-block") : postImage.classList.add("d-none");
+    
     postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
 
@@ -186,24 +193,107 @@ const createWrapper = (array, wrapperID) => {
 }
 
 const printPosts = async()=>{
-    let postsArray = await getData()
-    createWrapper(postsArray,'wrapperID')
+
+    let postsArray = await getData();
+
+    let objectsSearch = postsArray;
+
+    createWrapper(postsArray,'wrapperID');
+    // ======================================= // 
+    let wrapper = document.getElementById('wrapperID');
+
+    let filterSearch = document.getElementById("search-filter");
+
+    filterSearch.addEventListener("keyup", (event) => {
+
+        let searchText = document.getElementById("search-filter").value;
+        
+        let elementObject = [];
+
+        let flag = false; 
+
+        objectsSearch.filter(element =>{ 
+
+            let string1 = element.title.toLowerCase();
+            let string2 = searchText.toLowerCase();
+            
+            for(let i=0 ; i < string2.length ; i++){
+                
+                if(string1[i] == string2[i]){
+                    flag = true;
+                }else{  
+                    flag = false;
+                }
+            }
+            if(flag == true){
+                wrapper.innerHTML = ""; 
+                elementObject.push(element);    
+                createWrapper(elementObject,'wrapperID');
+            }
+            
+        })
+
+        if(searchText.length == 0){
+            wrapper.innerHTML = "";
+            createWrapper(postsArray,'wrapperID');
+        }
+    });
+
+    // ======================= // 
+
+    let relevantBtn = document.getElementById("relevant-btn");
+    
+
+    relevantBtn.addEventListener("click", () => {
+        let arrayPostsRelevant = [];
+        wrapper.innerHTML = "";
+        postsArray.forEach((element) => {
+            if(element.relevant == true){
+                arrayPostsRelevant.push(element);
+            }
+        })
+       
+        createWrapper(arrayPostsRelevant,'wrapperID');
+    })
+    
+   
+    // ======================= // 
+
+    
+    let topBtn = document.getElementById("top-btn");
+
+    topBtn.addEventListener("click", () => {
+        wrapper.innerHTML = "";
+        let arrayPostsTop = [];
+        postsArray.forEach((element) => {
+            let ratingNumber = Math.floor(Math.random() * 18);
+            if(ratingNumber > 9){
+                arrayPostsTop.push(element);
+            }
+        })
+
+        console.log(arrayPostsTop); 
+
+        createWrapper(arrayPostsTop,'wrapperID');
+    })
+
+    // ======================= // 
+
+    let latestBtn = document.getElementById("lastest-btn");
+
+    latestBtn.addEventListener(("click"), () => {
+        wrapper.innerHTML = "";
+        createWrapper(postsArray,'wrapperID');
+    });
     
 }
+
+
+    
 
 printPosts();
 
 
-//function for filtering in search bar for the relevant post titles
-let filterSearch = document.getElementById("search-filter");
 
-filterSearch.addEventListener("keyup", (event) => {
-    let search = event.target.value;
-
-    let result = createPost.filter(titleObject => titleObject.title.toLowerCase().includes(search.toLowerCase())
-);
-
-printPosts(result, "search-filter")
-});
 
 

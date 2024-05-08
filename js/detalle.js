@@ -48,8 +48,8 @@ const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
 
 // /*3: Extraemos el parámetro que deseamos*/
-// let postKey = params.get("postKey");
-// console.log(postKey);
+let postKey = params.get("postKey");
+console.log(postKey);
 
 // const fetchpostByKey = async (postKey) => {
 //   let response = await fetch(
@@ -58,3 +58,43 @@ const params = new URLSearchParams(new URL(url).search);
 //   let data = await response.json();
 //   return data;
 // };
+
+// const fetchpostByKey = async (postKey) => {
+//     let response = await fetch(
+//       `https://javascript33g-default-rtdb.firebaseio.com/posts/${postKey}/.json`
+//     );
+//     let data = await response.json();
+//     return data;
+//   };
+
+//   const printpostData = async (postKey) => {
+//     let postData = await fetchpostByKey(postKey);
+//     console.log(postData);
+//     let {
+//       name,
+//       age,
+//       gender,
+//       hasVaccines,
+//       sterilized,
+//       breed,
+//       specie,
+//       picture,
+//       presentation,
+//     } = postData;
+
+//     document.getElementById("post-picture").setAttribute("src", picture);
+//     document.getElementById("post-name").innerText = name;
+//     document.getElementById("post-presentation").innerText = presentation;
+//     document.getElementById("post-specie").innerText = specie;
+//     document.getElementById("post-breed").innerText = breed;
+//     document.getElementById("post-gender").innerText = gender;
+//     document.getElementById("post-age").innerText = age;
+//     document.getElementById("post-sterilized").innerText = sterilized
+//       ? "Sí"
+//       : "No";
+//     document.getElementById("post-is-vaccinate").innerText = hasVaccines
+//       ? "Sí"
+//       : "No";
+//   };
+
+//   printpostData(postKey);

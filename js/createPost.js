@@ -9,11 +9,24 @@ savePostBtn.addEventListener("click", async () => {
         let property = field.name;
         let value = field.value;
         postObject[property] = value;
+    
     });
 
+    let checkbox = document.getElementById("myCheckbox");
+    let checkboxValue = checkbox.checked;
+    postObject["relevant"] = checkboxValue; 
+
+
+    
     console.log(postObject);
     let savedPost = await createPost(postObject);
     console.log(savedPost);
+
+
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+
+    localStorage.setItem("token", token);
+    window.open("../index.html", "_self");
 
 });
 

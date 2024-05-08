@@ -9,40 +9,33 @@
     <title>DEV Community</title>
 </head>
 
-<body>
-    <nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-10">
-                    <div class="devSearchFlex d-flex">
-                        <div class="d-inline-flex p-2">           
-                            <img class="logoDev"
-                            src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
-                            alt="logo">
-                            <p>Create Post</p>
-                        </div>
-                        <div class="p-2">
-                            <button class="buttonLogIn2 border rounded">Edit</button>
-                            <button class="buttonLogIn2 border rounded">Preview</button> 
-                        </div>            
-                        </div>
-                    </div>
-                </div>
+<body class="bg-success p-2 text-dark bg-opacity-10">
+    
+    <div class="d-flex w-100">
+        <div class="d-inline-flex p-2">           
+            <img
+            src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+            alt="logo">
+            <p class="mt-4 ms-5">Create Post</p>
+            <div class="d-flex align-items-start mt-3 ms-5 navBarBtns">
+                <button type="button" class="btn" data-bs-toggle="button">Edit</button>
+                <button type="button" class="btn" data-bs-toggle="button">Preview</button>
             </div>
-        </div>    
-    </nav>
+        </div>            
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-10 h-75 d-inline-block mb-4">
-                <button class="border rounded border-light-subtle mt-4 btn btn-outline-secondary"><strong>Add a cover image </strong> 
-                </button>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-10">
-                <form id="create-post-form" action="" class="text-black border rounded p-3">
+                <form id="create-post-form" action="" class="text-black border rounded p-3 bg-body-secondary mt-5">
                     <div class="form-group mb-3">
-                        <label for="">Title</label>
+                        <div class="form-group mb-3">
+                            <label for=""><strong>Image</strong></label>
+                            <input name="image" type="submit" class="form-control" value=""/>
+                        </div>
+                        <label for=""><strong>Title</strong></label>
                         <input name="title" type="text" class="form-control" placeholder="Write your post content here..." value=""/>
                     </div>
                     <div class="border border-light-subtle bg- d-flex justify-content-evenly">
@@ -78,18 +71,21 @@
                           </svg>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="">Author</label>
+                        <label for=""><strong>Author</strong></label>
                         <input name="author" type="text" class="form-control" value=""/>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="">Content</label>
+                        <label for=""><strong>Content</strong></label>
                         <input name="content" type="text" class="form-control" placeholder="Write your post content here..." value=""/>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="">tags</label>
+                        <label for=""><strong>Tags</strong></label>
                         <input name="tags" type="text" class="form-control" value=""/>
                     </div>
-                    
+                    <div class=" mb-3">
+                        <label><strong>Relevant</strong></label>
+                        <input name="check" type="checkbox" id="myCheckbox">   
+                    </div>
                 </form>
             </div>
         </div>
@@ -97,10 +93,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 mt-5 d-flex justify-content-start gap-4">
-                    <button type="button" id="save-post-btn" class="btnAcc2 bg-info border rounded w-25">Publish</button> 
-                    <button class="btnAcc2 border rounded">Save draft</button> 
+                    <button type="button" id="save-post-btn" class="btnAcc2 bg-primary-subtle border rounded w-25"><strong>Publish</strong></button> 
+                    <button type="button" class="btn" data-bs-toggle="button">Save Draft</button>
                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"><path d="M12 1l9.5 5.5v11L12 23l-9.5-5.5v-11L12 1zm0 2.311L4.5 7.653v8.694l7.5 4.342 7.5-4.342V7.653L12 3.311zM12 16a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                    <button class="buttonLogIn2 border rounded">Revert new changes</button> 
+                    <button type="button" class="btn" data-bs-toggle="button">Revert new changes</button>
                 </div>
             </div>
         </div>

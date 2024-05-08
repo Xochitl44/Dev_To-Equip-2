@@ -105,24 +105,16 @@
             <div class="col-7">
                 <section class="sectionMain">
                     <div>
-                        <img class="mainImage d-block" src="https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F30nnpqdn8ghwfaq1790w.jpg" alt="image">
+                        <img id="image-post" class="mainImage d-block" src="" alt="image">
                     </div>
-                    <div class="authorContainer">
-                        <div class="divTravis">
-                            <img class="imageTravis" src="https://media.dev.to/cdn-cgi/image/width=320,height=320,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F363742%2Fc7dc1bbd-b10f-49cc-8687-2216b81a4f45.png">
-                        </div>
-                        <div class="authorDate">
-                            <p> Daniel Hodvogner<br>Mar 17</p>
-                        </div>
-                    </div>
-                    <h1>The IT Team of USS Enterprise</h1>
-                    <div>
-                        <p class="text-left p-3">Lately, many software engineers have been concerned about the future with the emergence of new technologies like LLMs. We are both afraid and excited about what lies ahead. I, too, share these feelings, and in this regard, I would like to share my prediction for the future. I was heavily inspired by Dr Matt Welsh's talk at Harvard University, which I recommend watching (link at the end of the article).</p>
+                   
+                    <h1 id="title-post"></h1>
+                    <div class="description">
+                        <p id="post-content" class="text-left p-3"></p>
                     </div>
                     <div class="buttonsDiv">
-                        <button class="btnGreen btnColorGreen">#frontend</button>
-                    <button class="btnGreen btnColorGreen">#JS</button>
-                    <button class="btnGreen btnColorGreen">#technews</button>
+                    <button id="tags-post" class="btnGreen btnColorGreen"></button>
+                    
                 </div>
                 <div class="iconsDiv">
                     <img class="icons" src="https://dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg">
@@ -153,7 +145,7 @@
                                 <div class="cardContent info-post" >
                                     <div class="d-flex autor-detalles align-items-end gap-3">
                                         <img width="50px" class="rounded-circle " src="https://media.dev.to/cdn-cgi/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F9597%2F2629be65-f045-4612-a7e9-28cd9e48bd49.jpg" alt="">
-                                        <span class="author">Nick Taylor</span>
+                                        <span class="author" id="author-name"></span>
                                     </div>
                                     <button class="btn btn-primary mt-3 w-100">
                                         Follow Me

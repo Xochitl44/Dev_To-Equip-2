@@ -48,6 +48,7 @@ let createPost = (objectPost,index) => {
     
     let divForAuthorImage = document.createElement("div");
     divForAuthorImage.classList.add("divTravis");
+   
 
     let authorImage = document.createElement("img");
     authorImage.classList.add("imageTravis");
@@ -78,7 +79,8 @@ let createPost = (objectPost,index) => {
     let divForContentPost = document.createElement("div");
     let contentPost = document.createElement("p");
     contentPost.classList.add("text-left","p-3");
-    let contentPostText = document.createTextNode(content);
+    let contentCut = content.split(" ");
+    let contentPostText = document.createTextNode(contentCut.slice(0, 50).join(" "));
     contentPost.append(contentPostText);
     divForContentPost.append(contentPost)
 

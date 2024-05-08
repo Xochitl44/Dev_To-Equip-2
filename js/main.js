@@ -21,7 +21,7 @@ showDivBarNav(localToken);
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-    
+   
     let {author, content, image, tags, title} = objectPost;
     
     let mainSection = document.createElement("section")
@@ -190,14 +190,106 @@ const createWrapper = (array, wrapperID) => {
 }
 
 const printPosts = async()=>{
-    let postsArray = await getData()
-    createWrapper(postsArray,'wrapperID')
+
+    let postsArray = await getData();
+
+    let objectsSearch = postsArray;
+
+    createWrapper(postsArray,'wrapperID');
+    // ======================================= // 
+    let wrapper = document.getElementById('wrapperID');
+
+    let filterSearch = document.getElementById("search-filter");
+
+    filterSearch.addEventListener("keyup", (event) => {
+
+        let searchText = document.getElementById("search-filter").value;
+        
+        let elementObject = [];
+
+        let flag = false; 
+
+        objectsSearch.filter(element =>{ 
+
+            let string1 = element.title.toLowerCase();
+            let string2 = searchText.toLowerCase();
+            
+            for(let i=0 ; i < string2.length ; i++){
+                
+                if(string1[i] == string2[i]){
+                    flag = true;
+                }else{  
+                    flag = false;
+                }
+            }
+            if(flag == true){
+                wrapper.innerHTML = ""; 
+                elementObject.push(element);    
+                createWrapper(elementObject,'wrapperID');
+            }
+            
+        })
+
+        if(searchText.length == 0){
+            wrapper.innerHTML = "";
+            createWrapper(postsArray,'wrapperID');
+        }
+    });
+
+    // ======================= // 
+
+    let relevantBtn = document.getElementById("relevant-btn");
+    
+
+    relevantBtn.addEventListener("click", () => {
+        let arrayPostsRelevant = [];
+        wrapper.innerHTML = "";
+        postsArray.forEach((element) => {
+            if(element.relevant == true){
+                arrayPostsRelevant.push(element);
+            }
+        })
+       
+        createWrapper(arrayPostsRelevant,'wrapperID');
+    })
+    
+   
+    // ======================= // 
+
+    
+    let topBtn = document.getElementById("top-btn");
+
+    topBtn.addEventListener("click", () => {
+        wrapper.innerHTML = "";
+        let arrayPostsTop = [];
+        postsArray.forEach((element) => {
+            let ratingNumber = Math.floor(Math.random() * 18);
+            if(ratingNumber > 9){
+                arrayPostsTop.push(element);
+            }
+        })
+
+        console.log(arrayPostsTop); 
+
+        createWrapper(arrayPostsTop,'wrapperID');
+    })
+
+    // ======================= // 
+
+    let latestBtn = document.getElementById("lastest-btn");
+
+    latestBtn.addEventListener(("click"), () => {
+        wrapper.innerHTML = "";
+        createWrapper(postsArray,'wrapperID');
+    });
     
 }
 
+
+    
+
 printPosts();
 
-// Function that shows or hide the left aside once the user logs in
 
 let showLeftAside = (token) => {
     let divLeftAside = document.getElementById("rightAsideDiv");
@@ -211,4 +303,3 @@ let showLeftAside = (token) => {
     }
 }
 showLeftAside(localToken);
-

@@ -1,5 +1,4 @@
 import { getData } from "./modules/API.js"
-
 let localToken = localStorage.getItem("token");
 console.log(localToken);
 
@@ -234,13 +233,14 @@ const latestButton = async()=>{
 latestButton();
 
 //Adds functioning to the Top Button, shows the posts that have more than 9 points of rating 
+
 const topButton = async()=>{
 
     let arrayPostsTop = await getData();
     let topBtn = document.getElementById("top-btn");
     let wrapper = document.getElementById('wrapperID');
-    let arraypostsTopFiltered = []
     topBtn.addEventListener("click", () => {
+        let arraypostsTopFiltered = []
         wrapper.innerHTML = "";
         arrayPostsTop.forEach((element) => {
             let ratingNumber = Math.floor(Math.random() * 18);

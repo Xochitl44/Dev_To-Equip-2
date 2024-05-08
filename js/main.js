@@ -277,10 +277,11 @@ const printPosts = async()=>{
     // ======================= // 
 
     let latestBtn = document.getElementById("lastest-btn");
-
+    let latestPostArray = [];
     latestBtn.addEventListener(("click"), () => {
         wrapper.innerHTML = "";
-        createWrapper(postsArray,'wrapperID');
+        latestPostArray = postsArray.reverse()  ;
+        createWrapper(latestPostArray,'wrapperID');
     });
     
 }

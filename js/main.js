@@ -23,12 +23,11 @@ showDivBarNav(localToken);
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-   
-    let { author, content, image, tags, title, key } = objectPost;
+    let { author, content, image, tags, title, key ,rating } = objectPost;
 
     let linkToDetail = document.createElement("a");
     linkToDetail.href = `../views/detalle.html?postKey=${key}`;
-    
+
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
 
@@ -249,9 +248,9 @@ const topButton = async()=>{
         let arraypostsTopFiltered = []
         wrapper.innerHTML = "";
         arrayPostsTop.forEach((element) => {
-            let ratingNumber = Math.floor(Math.random() * 18);
-            if(ratingNumber > 9){
-                console.log(ratingNumber);
+            
+            if(element.rating > 9){
+                console.log(element.rating);
                 arraypostsTopFiltered.push(element);
             }
         })

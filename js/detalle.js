@@ -51,50 +51,44 @@ const params = new URLSearchParams(new URL(url).search);
 let postKey = params.get("postKey");
 console.log(postKey);
 
-// const fetchpostByKey = async (postKey) => {
-//   let response = await fetch(
-//     `https://javascript33g-default-rtdb.firebaseio.com/posts/${postKey}/.json`
-//   );
-//   let data = await response.json();
-//   return data;
-// };
+const fetchpostByKey = async (postKey) => {
+  let response = await fetch(
+    `https://devtoretojs-default-rtdb.firebaseio.com/posts/${postKey}/.json`
+  );
+  let data = await response.json();
+  console.log(data);
+  return data;
+};
 
-// const fetchpostByKey = async (postKey) => {
-//     let response = await fetch(
-//       `https://javascript33g-default-rtdb.firebaseio.com/posts/${postKey}/.json`
-//     );
-//     let data = await response.json();
-//     return data;
-//   };
+const printpostData = async (postKey) => {
+  let postData = await fetchpostByKey(postKey);
 
-//   const printpostData = async (postKey) => {
-//     let postData = await fetchpostByKey(postKey);
-//     console.log(postData);
-//     let {
-//       name,
-//       age,
-//       gender,
-//       hasVaccines,
-//       sterilized,
-//       breed,
-//       specie,
-//       picture,
-//       presentation,
-//     } = postData;
+  let { author, content, image, tags, title } = postData;
 
-//     document.getElementById("post-picture").setAttribute("src", picture);
-//     document.getElementById("post-name").innerText = name;
-//     document.getElementById("post-presentation").innerText = presentation;
-//     document.getElementById("post-specie").innerText = specie;
-//     document.getElementById("post-breed").innerText = breed;
-//     document.getElementById("post-gender").innerText = gender;
-//     document.getElementById("post-age").innerText = age;
-//     document.getElementById("post-sterilized").innerText = sterilized
-//       ? "Sí"
-//       : "No";
-//     document.getElementById("post-is-vaccinate").innerText = hasVaccines
-//       ? "Sí"
-//       : "No";
-//   };
+  document.getElementById("image-post").setAttribute("src", image);
+  document.getElementById("title-post").innerText = title;
+  document.getElementById("post-content").innerText = content;
+  document.getElementById("tags-post").innerText = tags;
+  document.getElementById("author-name").innerText = author;
 
-//   printpostData(postKey);
+  // document.getElementById("post-is-vaccinate").innerText = hasVaccines
+  //   ? "Sí"
+  //   : "No";
+};
+
+printpostData(postKey);
+
+let showDivBarNav = (token) => {
+  let divBarNav = document.getElementById("navBarDiv");
+  let navBarDivLogged = document.getElementById("navBarDivLogged");
+  if (token === null) {
+    divBarNav.classList.add("d-block");
+    navBarDivLogged.classList.add("d-none");
+  } else {
+    divBarNav.classList.add("d-none");
+    navBarDivLogged.classList.add("d-block");
+  }
+};
+let localToken = localStorage.getItem("token");
+
+showDivBarNav();

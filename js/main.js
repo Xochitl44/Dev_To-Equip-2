@@ -24,7 +24,10 @@ showDivBarNav(localToken);
 let createPost = (objectPost,index) => {
 
    
-    let {author, content, image, tags, title} = objectPost;
+    let { author, content, image, tags, title, key } = objectPost;
+
+    let linkToDetail = document.createElement("a");
+    linkToDetail.href = `../views/detalle.html?postKey=${key}`;
     
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
@@ -173,7 +176,8 @@ let createPost = (objectPost,index) => {
     
     
 
-    return mainSection;
+    linkToDetail.append(mainSection);
+    return linkToDetail;
 
 }
 

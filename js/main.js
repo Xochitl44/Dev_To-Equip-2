@@ -1,5 +1,4 @@
 import { getData } from "./modules/API.js"
-
 let localToken = localStorage.getItem("token");
 console.log(localToken);
 
@@ -16,15 +15,19 @@ let showDivBarNav = (token) => {
         navBarDivLogged.classList.add("d-block");  
     }
 }
+
+// Changes Navbar between Login and User depending if we have a token 
 showDivBarNav(localToken);
 
 
 // Function that creates Post in DOM 
 let createPost = (objectPost,index) => {
 
-   
-    let {author, content, image, tags, title} = objectPost;
-    
+    let { author, content, image, tags, title, key ,rating } = objectPost;
+
+    let linkToDetail = document.createElement("a");
+    linkToDetail.href = `../views/detalle.html?postKey=${key}`;
+
     let mainSection = document.createElement("section")
     mainSection.classList.add("sectionMain");
 
@@ -47,6 +50,7 @@ let createPost = (objectPost,index) => {
     
     let divForAuthorImage = document.createElement("div");
     divForAuthorImage.classList.add("divTravis");
+   
 
     let authorImage = document.createElement("img");
     authorImage.classList.add("imageTravis");
@@ -77,7 +81,8 @@ let createPost = (objectPost,index) => {
     let divForContentPost = document.createElement("div");
     let contentPost = document.createElement("p");
     contentPost.classList.add("text-left","p-3");
-    let contentPostText = document.createTextNode(content);
+    let contentCut = content.split(" ");
+    let contentPostText = document.createTextNode(contentCut.slice(0, 50).join(" "));
     contentPost.append(contentPostText);
     divForContentPost.append(contentPost)
 
@@ -85,7 +90,7 @@ let createPost = (objectPost,index) => {
     divButtonsHashtags.classList.add("buttonsDiv");
 
     // Creates buttons for hashtags 
-    let arrayHashtags = tags.split("#");
+    let arrayHashtags = tags.split(",");
     arrayHashtags.forEach(element => {
         if(element != ""){
             let firstHashtagButton = document.createElement("button");
@@ -164,13 +169,14 @@ let createPost = (objectPost,index) => {
 
     divForIcons.append(firstIconImg,secondIconImg,thirdIconImg,fourthIconImg,reactionsParagraph,commentsIcon,commentParagraph,savePostIcon);
 
-    mainSection.append(divForImage,divForAuthor,postTitle,divForContentPost,divButtonsHashtags,divForIcons);
+    mainSection.append(divForImage,postTitle,divForAuthor,divForContentPost,divButtonsHashtags,divForIcons);
 
 
     
     
 
-    return mainSection;
+    linkToDetail.append(mainSection);
+    return linkToDetail;
 
 }
 
@@ -190,6 +196,7 @@ const createWrapper = (array, wrapperID) => {
     });
 }
 
+// printPosts in Wrapper
 const printPosts = async()=>{
 
     let postsArray = await getData();
@@ -199,7 +206,7 @@ const printPosts = async()=>{
 
 printPosts();
 
-
+// Shows or hide Leftside bar 
 let showLeftAside = (token) => {
     let divLeftAside = document.getElementById("rightAsideDiv");
     let divLeftAsideLogged = document.getElementById("rightAsideDivLogged");
@@ -214,6 +221,7 @@ let showLeftAside = (token) => {
 
 showLeftAside(localToken);
 
+//Adds functioning to the Latest Button, shows the latest posts added to our Data Base 
 const latestButton = async()=>{
 
     let wrapper = document.getElementById('wrapperID');
@@ -229,18 +237,20 @@ const latestButton = async()=>{
 
 latestButton();
 
+//Adds functioning to the Top Button, shows the posts that have more than 9 points of rating 
+
 const topButton = async()=>{
 
     let arrayPostsTop = await getData();
     let topBtn = document.getElementById("top-btn");
     let wrapper = document.getElementById('wrapperID');
-    let arraypostsTopFiltered = []
     topBtn.addEventListener("click", () => {
+        let arraypostsTopFiltered = []
         wrapper.innerHTML = "";
         arrayPostsTop.forEach((element) => {
-            let ratingNumber = Math.floor(Math.random() * 18);
-            if(ratingNumber > 9){
-                console.log(ratingNumber);
+            
+            if(element.rating > 9){
+                console.log(element.rating);
                 arraypostsTopFiltered.push(element);
             }
         })
@@ -255,6 +265,7 @@ const topButton = async()=>{
 
 topButton();
 
+//Adds functionality to the Top Button,
 const relevantButton = async()=>{ 
 
     let postsArray = await getData();
@@ -273,11 +284,12 @@ const relevantButton = async()=>{
         })
        
         createWrapper(arrayPostsRelevant,'wrapperID');
+        arrayPostsRelevant = [];
     })
 }
 
 relevantButton();
-
+// Gives funcionality to the search bar taking as parameter the text that we are writing 
 const searchFilter = async () =>{
 
     let objectsSearch = await getData();
@@ -323,3 +335,4 @@ const searchFilter = async () =>{
 }
 
 searchFilter();
+

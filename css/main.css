@@ -262,9 +262,6 @@ html {
 body {
   height: 100dvh;
 }
-body p {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
 
 header {
   max-width: 100%;
@@ -536,7 +533,6 @@ header ul a {
   background-color: whitesmoke;
   margin: 0.5px;
   text-align: justify;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-bottom: 1px;
   margin-left: 10px;
   margin-right: 10px;
@@ -559,11 +555,11 @@ a {
   text-decoration: none;
   font-weight: 400;
   font-size: 16px;
-  color: #171717;
+  color: rgb(87, 87, 87);
 }
 a:hover {
   cursor: pointer;
-  color: #0000ff;
+  color: rgb(59, 73, 223);
 }
 
 .aside2 .card {
@@ -597,7 +593,7 @@ a:hover {
 }
 .listPostSideBar:hover {
   background-color: #fff;
-  color: #0000ff;
+  color: rgb(59, 73, 223);
 }
 
 .icons-reaction {

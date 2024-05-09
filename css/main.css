@@ -291,30 +291,7 @@ header ul a {
   background-color: white;
   margin-left: 10px;
   margin-right: 10px;
-  /*.btn {
-          border: none;
-          height: 30px;
-          background: transparent;
-          font-family: $font-family;
-
-          span {
-              color: green;
-          }
-      }
-
-      .btn:hover {
-          background: rgb(130 5 146 / 10%);
-          opacity: 1;
-          color: black;
-          border: 1px solid purple;
-          border-radius: 8%;
-      }
-  }*/
-}
-.sectionMain h1 {
-  margin-top: 20px;
-  margin-left: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
 }
 .sectionMain h1:hover {
   color: rgb(59, 73, 223);
@@ -330,24 +307,12 @@ header ul a {
   height: 30px;
   border: 1px solid grey;
   border-radius: 50%;
-  margin-left: 20px;
-  margin-top: 20px;
 }
 .sectionMain .divTravis {
   width: 15%;
 }
-.sectionMain .authorContainer {
-  position: relative;
-}
-.sectionMain .authorDate {
-  position: absolute;
-  top: 3px;
-  left: 62px;
-}
 .sectionMain .iconsDiv {
   display: flex;
-  margin-left: 20px;
-  margin-top: 20px;
 }
 .sectionMain .iconsDiv .icons {
   background-color: lightgrey;
@@ -423,6 +388,9 @@ header ul a {
   color: black;
   border: 1px solid yellow;
   border-radius: 6%;
+}
+.sectionMain .second-part {
+  padding: 0 20px;
 }
 .sectionMain .reactions {
   margin-left: 20px;

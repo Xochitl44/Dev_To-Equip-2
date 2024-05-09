@@ -1,13 +1,12 @@
 a{
     &:hover{
         cursor: pointer;
-    
-        color: #0000ff;
+        color: $blue-devto;
     }
     text-decoration: none;
     font-weight: 400;
     font-size: 16px;
-    color: #171717;
+    color: $parrafos;
     
 }
 .aside2{
@@ -45,7 +44,7 @@ a{
     list-style: none;
     &:hover{
         background-color: #fff;
-        color: #0000ff;
+        color: $blue-devto;
     }
 
 }

@@ -226,11 +226,19 @@ const latestButton = async()=>{
 
     let wrapper = document.getElementById('wrapperID');
     let latestPostArray = await getData();
+    let x = latestPostArray;
     let latestBtn = document.getElementById("lastest-btn");
-    
     latestBtn.addEventListener(("click"), () => {
         wrapper.innerHTML = "";
-        createWrapper(latestPostArray.reverse(),'wrapperID');
+
+        x = latestPostArray.reverse();
+        x = x.slice(0,3);
+        createWrapper(x,'wrapperID');
+        x = [];
+        x = latestPostArray;
+            
+    
+        
     });
 
 }
@@ -239,8 +247,8 @@ latestButton();
 
 //Adds functioning to the Top Button, shows the posts that have more than 9 points of rating 
 
-const topButton = async()=>{
-
+const topButton = async()=>{    
+    
     let arrayPostsTop = await getData();
     let topBtn = document.getElementById("top-btn");
     let wrapper = document.getElementById('wrapperID');
@@ -257,7 +265,7 @@ const topButton = async()=>{
 
         console.log(arraypostsTopFiltered); 
 
-        createWrapper(arraypostsTopFiltered,'wrapperID');
+        createWrapper(arraypostsTopFiltered.slice(0,3),'wrapperID');
         
     })
 

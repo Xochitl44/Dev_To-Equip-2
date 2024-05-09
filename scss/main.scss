@@ -2,18 +2,100 @@
 $body-bg-color: rgb(245, 245, 245);
 $card-bg-color: white;
 $card-list-margin-bottom: 10px;
+$blue-devto: rgb( 59, 73, 223 );
+$blue-hover: rgb(59 73 223 / 10%);
+$parrafos:  rgb(87, 87, 87);
+$titulos:rgb(36, 36, 36);
 
 //Variables de Xochitl
-$font-family: Georgia, 'Times New Roman', Times, serif;
+$font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 $font-size: 10px;
 $max-width: 100%;
 $max-height: 100%;
 $margin: 0px auto;
 //fin de variables de Xochitl
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+// Establecer variables para los pesos de fuente
+$font-weight-heading: 700;
+$font-weight-paragraph: 400;
+
+// Aplicar estilos a los encabezados h1-h6
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family;
+    font-weight: $font-weight-heading;
+    font-size: 20px;
+    color: $titulos;
+}
+
+// Aplicar estilos a los párrafos
+p {
+    font-family: $font-family;
+    font-weight: $font-weight-paragraph;
+    font-size: 16px;
+    color: $parrafos;
+}
+
+ul{
+    padding: 0px;
+    list-style: none;
+}
+li{
+    padding: 8px 16px;
+}
+li:hover{
+    background-color: $blue-hover;
+    color: $blue-devto;
+    text-decoration: underline;
+    border-radius: 5px;
+    a{
+        color: $blue-devto;
+    }
+}
+
+a{
+    color: $blue-devto;
+}
 body {
     background-color: $body-bg-color;
 }
+
+/*Header*/
+.devSearchFlex {
+    display: flex;
+    padding: 5px 16px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Home*/
+.icons-social{
+    
+    justify-content: center;
+    svg{
+        fill: $parrafos;
+        
+    }
+    a{
+        padding: 8px;
+    }
+    a:hover{
+        background-color: $blue-hover; 
+        border-radius: 5px;
+        svg{
+            fill: $blue-devto;
+        }
+    }
+}
+
+.scroll-list{
+    height: 200px;
+    overflow-y: auto;
+}
+
 
 .contenedor {
     width: 100%;
@@ -34,13 +116,12 @@ body {
 
 nav {
     width: 100%;
-    max-width: 1300px;
     //margin: 0 auto;
     margin-top: 0;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 10px;
+    background-color: #fff;
     border-bottom: 1px solid darkgrey;
 }
 
@@ -68,8 +149,7 @@ nav {
 }
 
 .logoDev {
-    height: 50px;
-    width: 60px;
+    width: 5%;
 }
 
 .searchBar {
@@ -92,17 +172,17 @@ nav {
 .buttonLogIn2:hover {
     background: rgb(234, 241, 252);
     opacity: 1;
-    color: blue;
+    color: $blue-devto;
     border: none;
     border-radius: 8%;
     text-decoration: underline;
 }
 
 .btnAcc2 {
-    border: 1px solid blue;
+    border: 1px solid $blue-devto;
     border-radius: 4px;
     background-color: $body-bg-color;
-    color: blue;
+    color: $blue-devto;
     height: 38px;
     width: 128px;
     font-weight: bold;
@@ -111,7 +191,7 @@ nav {
 }
 
 .btnAcc2:hover {
-    background-color: blue;
+    background-color: $blue-devto;
     color: white;
     text-decoration: underline;
 }
@@ -131,12 +211,11 @@ nav {
     flex-grow: 1;
     min-width: 20%;
     gap: 30px;
-
+    padding: 12px;
     .card {
         background-color: $card-bg-color;
         border: 2px solid #ccc;
         border-radius: 12px;
-        overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
         .cardContent {
@@ -150,25 +229,6 @@ nav {
     }
 }
 
-
-.links {
-    list-style-type: none;
-    margin-bottom: 10px;
-    text-decoration: none;
-
-    li {
-        margin-bottom: $card-list-margin-bottom;
-
-        a {
-            text-decoration: none;
-            color: black
-        }
-    }
-}
-
-h3 {
-    padding-top: 20px;
-}
 
 .socials {
     display: flex;
@@ -195,6 +255,15 @@ div {
     }
 }
 
+.footer{
+    p{
+        font-size: 14px;
+        a{
+            color: $blue-devto;
+        }
+    }
+}
+
 //buttons Create Account and Log in de Aside 1
 .buttonLogIn {
     border: none;
@@ -209,24 +278,24 @@ div {
 .buttonLogIn:hover {
     background: rgb(234, 241, 252);
     opacity: 1;
-    color: blue;
+    color: $blue-devto;
     border: none;
     border-radius: 8%;
     text-decoration: underline;
 }
 
 .btnAcc {
-    border: 1px solid blue;
+    border: 1px solid $blue-devto;
     border-radius: 4px;
     background-color: $body-bg-color;
-    color: blue;
+    color: $blue-devto;
     height: 38px;
     width: 100%;
     font-weight: bold;
 }
 
 .btnAcc:hover {
-    background-color: blue;
+    background-color: $blue-devto;
     color: white;
     text-decoration: underline;
 }
@@ -249,11 +318,6 @@ html {
 
 body {
     height: 100dvh;
-
-
-    p {
-        font-family: $font-family;
-    }
 }
 
 header {
@@ -286,16 +350,10 @@ header {
     background-color: $card-bg-color;
     margin-left: 10px;
     margin-right: 10px;
-
-
-    h1 {
-        margin-top: 20px;
-        margin-left: 20px;
-        font-family: $font-family;
-    }
+    padding: 30px;
 
     h1:hover {
-        color: blue;
+        color: $blue-devto;
     }
 
     .mainImage {
@@ -309,8 +367,6 @@ header {
         height: 30px;
         border: 1px solid grey;
         border-radius: 50%;
-        margin-left: 20px;
-        margin-top: 20px;
 
     }
 
@@ -319,20 +375,9 @@ header {
 
     }
 
-    .authorContainer {
-        position: relative;
-    }
-
-    .authorDate {
-        position: absolute;
-        top: 3px;
-        left: 62px;
-    }
 
     .iconsDiv {
         display: flex;
-        margin-left: 20px;
-        margin-top: 20px;
 
         .icons {
             background-color: lightgrey;
@@ -373,7 +418,7 @@ header {
             font-family: $font-family;
 
             .btnColorBlue {
-                color: blue;
+                color: $blue-devto;
             }
         }
 
@@ -381,7 +426,7 @@ header {
             background: rgba(63, 60, 240, 0.1);
             opacity: 1;
             color: black;
-            border: 1px solid blue;
+            border: 1px solid $blue-devto;
             border-radius: 6%;
         }
 
@@ -426,25 +471,9 @@ header {
 
     }
 
-    /*.btn {
-            border: none;
-            height: 30px;
-            background: transparent;
-            font-family: $font-family;
-
-            span {
-                color: green;
-            }
-        }
-
-        .btn:hover {
-            background: rgb(130 5 146 / 10%);
-            opacity: 1;
-            color: black;
-            border: 1px solid purple;
-            border-radius: 8%;
-        }
-    }*/
+    .second-part{
+        padding: 0 20px
+    }
 
     .reactions {
         margin-left: 20px;
@@ -473,7 +502,7 @@ header {
     }
 
     .startNow {
-        color: blue;
+        color: $blue-devto;
         text-decoration: underline;
         font-size: 30px;
     }
@@ -578,7 +607,7 @@ header {
 }
 
 .contenedores:hover {
-    color: blue;
+    color: $blue-devto;
 }
 
 .contenedor1 {
@@ -586,7 +615,7 @@ header {
     background-color: whitesmoke;
     margin: .5px;
     text-align: justify;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 1px;
     margin-left: 10px;
     margin-right: 10px;
@@ -601,7 +630,7 @@ header {
     .row {
         .continue-with {
             border: 5px;
-            border-color: blue;
+            border-color: $blue-devto;
         }
     }
 }

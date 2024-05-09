@@ -170,7 +170,7 @@ let createPost = (objectPost,index) => {
 
     divForIcons.append(firstIconImg,secondIconImg,thirdIconImg,fourthIconImg,reactionsParagraph,commentsIcon,commentParagraph,savePostIcon);
 
-    mainSection.append(divForImage,divForAuthor,postTitle,divForContentPost,divButtonsHashtags,divForIcons);
+    mainSection.append(divForImage,postTitle,divForAuthor,divForContentPost,divButtonsHashtags,divForIcons);
 
 
     

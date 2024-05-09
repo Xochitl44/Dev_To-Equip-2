@@ -537,4 +537,44 @@ a:hover {
 .listPostSideBar:hover {
   background-color: #fff;
   color: #0000ff;
+}
+
+.icons-reaction {
+  padding: 10px;
+}
+.icons-reaction:hover {
+  background-color: #fff;
+  color: #0000ff;
+}
+.icons-reaction span {
+  color: black;
+}
+
+.info-post {
+  border-top: 25px solid pink;
+}
+.info-post .autor-detalles {
+  margin-top: -30px;
+}
+.info-post .autor-detalles .author {
+  font-weight: 700;
+}
+.info-post ul {
+  list-style: none;
+  padding: 0;
+}
+.info-post ul li {
+  margin: 10px 0;
+}
+.info-post ul .key {
+  font-weight: 700;
+}
+
+#titleListWrapperDetail {
+  margin: 0;
+  padding: 0;
+}
+
+.sectionMain h1, .sectionMain p {
+  color: #212529;
 }/*# sourceMappingURL=main.css.map */

@@ -350,13 +350,7 @@ header {
     background-color: $card-bg-color;
     margin-left: 10px;
     margin-right: 10px;
-
-
-    h1 {
-        margin-top: 20px;
-        margin-left: 20px;
-        font-family: $font-family;
-    }
+    padding: 30px;
 
     h1:hover {
         color: $blue-devto;
@@ -373,8 +367,6 @@ header {
         height: 30px;
         border: 1px solid grey;
         border-radius: 50%;
-        margin-left: 20px;
-        margin-top: 20px;
 
     }
 
@@ -383,20 +375,9 @@ header {
 
     }
 
-    .authorContainer {
-        position: relative;
-    }
-
-    .authorDate {
-        position: absolute;
-        top: 3px;
-        left: 62px;
-    }
 
     .iconsDiv {
         display: flex;
-        margin-left: 20px;
-        margin-top: 20px;
 
         .icons {
             background-color: lightgrey;
@@ -490,25 +471,9 @@ header {
 
     }
 
-    /*.btn {
-            border: none;
-            height: 30px;
-            background: transparent;
-            font-family: $font-family;
-
-            span {
-                color: green;
-            }
-        }
-
-        .btn:hover {
-            background: rgb(130 5 146 / 10%);
-            opacity: 1;
-            color: black;
-            border: 1px solid purple;
-            border-radius: 8%;
-        }
-    }*/
+    .second-part{
+        padding: 0 20px
+    }
 
     .reactions {
         margin-left: 20px;

@@ -16,6 +16,8 @@ savePostBtn.addEventListener("click", async () => {
     let checkboxValue = checkbox.checked;
     postObject["relevant"] = checkboxValue; 
 
+    postObject["rating"] =  Math.floor(Math.random() * 18);
+
 
     
     console.log(postObject);

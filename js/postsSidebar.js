@@ -40,7 +40,7 @@ const printPosts = async (tag1, tag2) => {
   createWrapper(filteredPosts2, "rightSideBar2");
 };
 
-printPosts("#frontend", "#AI");
+printPosts("frontend", "IA");
 
 const printTitles = async () => {
   let postsArray = await getData();

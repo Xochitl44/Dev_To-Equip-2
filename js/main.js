@@ -226,15 +226,16 @@ const latestButton = async()=>{
 
     let wrapper = document.getElementById('wrapperID');
     let latestPostArray = await getData();
+    let x = latestPostArray;
     let latestBtn = document.getElementById("lastest-btn");
-    let latestCon = 0
     latestBtn.addEventListener(("click"), () => {
         wrapper.innerHTML = "";
 
-        latestPostArray = latestPostArray.slice(0,3);
-        console.log(latestPostArray);
-        createWrapper(latestPostArray.reverse(),'wrapperID');
-        latestPostArray.reverse();
+        x = latestPostArray.reverse();
+        x = x.slice(0,3);
+        createWrapper(x,'wrapperID');
+        x = [];
+        x = latestPostArray;
             
     
         

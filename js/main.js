@@ -91,7 +91,7 @@ let createPost = (objectPost,index) => {
     divButtonsHashtags.classList.add("buttonsDiv");
 
     // Creates buttons for hashtags 
-    let arrayHashtags = tags.split("#");
+    let arrayHashtags = tags.split(",");
     arrayHashtags.forEach(element => {
         if(element != ""){
             let firstHashtagButton = document.createElement("button");

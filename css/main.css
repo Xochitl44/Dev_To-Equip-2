@@ -117,10 +117,6 @@ nav {
   margin-top: -35px;
 }
 
-.logoDev {
-  width: 5%;
-}
-
 .searchBar {
   height: 40px;
   width: 400px;
@@ -602,11 +598,6 @@ a:hover {
 
 .sectionMain h1, .sectionMain p {
   color: #212529;
-}
-
-.loginDivs {
-  margin: 5px 5px 5px 125px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 .privacy-policy {

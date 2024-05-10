@@ -1,0 +1,64 @@
+.publishPost {
+    border: 1px solid blue;
+    border-radius: 4px;
+    background-color: blue;
+    color: white;
+    height: 38px;
+    width: 128px;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 3px;
+}
+
+.publishPost:hover {
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+}
+
+.createPostBody {
+    background-color: white;
+}
+
+#iconDiv {
+    width: 100%;
+    height: 40px;
+    background-color: $body-bg-color;
+}
+
+.createPostDevLogo {
+   margin-top: 30px;
+   display: flex;
+   align-items: center;
+   margin-left: 50px;
+   width: auto;
+   gap: 20px
+}
+
+.postText {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.createPostRightBtns {
+    margin-top: 30px;
+    margin-left: 500px;
+    border-color: blue;
+    border: 5px;
+}
+
+.rightSideBtns {
+    background-color: $body-bg-color;
+    color: black;
+    height: 38px;
+    width: 128px;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 3px;
+}
+
+.rightSideBtns:hover {
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    
+}

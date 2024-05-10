@@ -46,7 +46,7 @@ let createPost = (objectPost,index) => {
     divForImage.append(postImage);
 
     let divForAuthor = document.createElement("div");
-    divForAuthor.classList.add("authorContainer");
+    divForAuthor.classList.add("authorContainer","d-flex");
     
     let divForAuthorImage = document.createElement("div");
     divForAuthorImage.classList.add("divTravis");

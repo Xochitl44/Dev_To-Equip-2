@@ -37,8 +37,8 @@ let createPost = (objectPost,index) => {
     let postImage = document.createElement("img");
     postImage.classList.add("mainImage");
 
-    // Validates if it is the first post or not 
-    index == 0 ? postImage.classList.add("d-block") : postImage.classList.add("d-none");
+     
+    
     
     postImage.setAttribute("src",image);
     postImage.setAttribute("alt","image");
@@ -80,7 +80,7 @@ let createPost = (objectPost,index) => {
 
     let divForContentPost = document.createElement("div");
     let contentPost = document.createElement("p");
-    contentPost.classList.add("text-left","p-3");
+    contentPost.classList.add("text-left","p-0");
     let contentCut = content.split(" ");
     let contentPostText = document.createTextNode(contentCut.slice(0, 50).join(" "));
     contentPost.append(contentPostText);
@@ -88,6 +88,17 @@ let createPost = (objectPost,index) => {
 
     let divButtonsHashtags = document.createElement("div");
     divButtonsHashtags.classList.add("buttonsDiv");
+
+    // Validates if it is the first post or not
+
+    if(index == 0){
+        postImage.classList.add("d-block");
+        contentPost.classList.add("d-block");   
+    }else{
+        postImage.classList.add("d-none");
+        contentPost.classList.add("d-none");   
+
+    };
 
     // Creates buttons for hashtags 
     let arrayHashtags = tags.split(",");

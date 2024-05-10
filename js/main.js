@@ -263,10 +263,8 @@ const topButton = async()=>{
             }
         })
 
-        console.log(arraypostsTopFiltered); 
-
         createWrapper(arraypostsTopFiltered.slice(0,3),'wrapperID');
-        
+        console.log(arraypostsTopFiltered); 
     })
 
 }

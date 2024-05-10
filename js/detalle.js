@@ -68,7 +68,13 @@ const printpostData = async (postKey) => {
   document.getElementById("image-post").setAttribute("src", image);
   document.getElementById("title-post").innerText = title;
   document.getElementById("post-content").innerText = content;
-  document.getElementById("tags-post").innerText = tags;
+  let fixedTags = tags.split(",");
+  console.log(fixedTags)
+ /// fixedTags.forEach((element) => {
+  for(let i = 0 ; i < 3 ; i++){
+    document.getElementById("tags-post").innerText = "#" + fixedTags[i]; 
+    document.createElement("br");
+  }
   document.getElementById("author-name").innerText = author;
 
   // document.getElementById("post-is-vaccinate").innerText = hasVaccines
